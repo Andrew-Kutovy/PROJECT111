@@ -7,11 +7,6 @@ class UserService {
         return await userRepository.getAll();
     }
 
-    public async createUser(dto: IUser): Promise<IUser> {
-        await this.isEmailUniq(dto.email);
-        return await userRepository.createUser(dto);
-    }
-
     public async updateUser(userId: string, dto: Partial<IUser>): Promise<IUser> {
         return await userRepository.updateUser(userId, dto);
     }

@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-import { EGenders } from "../enums/gender.enum";
+import { ERoles} from "../enums/role.enum";
 import { IUser } from "../types/user.type";
 
 const userSchema = new Schema(
@@ -15,7 +15,7 @@ const userSchema = new Schema(
         },
         genders: {
             type: String,
-            enum: EGenders,
+            enum: ERoles,
         },
         email: {
             type: String,

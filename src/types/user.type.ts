@@ -1,11 +1,11 @@
 import { Document } from "mongoose";
 
-import { EGenders } from "../enums/gender.enum";
+import { ERoles} from "../enums/role.enum";
 
 export interface IUser extends Document {
     name?: string;
     age?: number;
-    genders?: EGenders;
+    role?: ERoles;
     email: string;
     password: string;
 }
