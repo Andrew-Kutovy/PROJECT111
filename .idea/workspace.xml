@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+/- mailer">
-      <change afterPath="$PROJECT_DIR$/src/constants/email.constant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/email-templates/views/forgot-password.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enums/email.action.enum.ts" afterDir="false" />
+    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+ mailer">
+      <change afterPath="$PROJECT_DIR$/src/enums/actionTokenType.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enums/user-status.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/ActionToken.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositories/action-token.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs/configs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/configs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/token.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/token.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/user.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/user.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/auth.router.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/email.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/email.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/token.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/token.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/token.types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +37,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -45,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "logout",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -90,7 +104,7 @@
       <updated>1699450294777</updated>
       <workItem from="1699450295901" duration="759000" />
       <workItem from="1699520231089" duration="3243000" />
-      <workItem from="1699524624157" duration="18157000" />
+      <workItem from="1699524624157" duration="23142000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
@@ -108,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699560436111</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="+ mailer">
+      <option name="closed" value="true" />
+      <created>1699563612608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699563612608</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +139,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="auth+" />
     <MESSAGE value="+/- mailer" />
-    <option name="LAST_COMMIT_MESSAGE" value="+/- mailer" />
+    <MESSAGE value="+ mailer" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ mailer" />
   </component>
 </project>

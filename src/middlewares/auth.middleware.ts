@@ -48,7 +48,6 @@ class AuthMiddleware {
       // const payload = tokenService
 
       const payload = tokenService.checkToken(accessToken, "access");
-
       const entity = await tokenRepository.findOne({ accessToken });
 
       if (!entity) {
