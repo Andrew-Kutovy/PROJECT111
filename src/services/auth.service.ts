@@ -1,16 +1,21 @@
-import { ApiError } from "../errors/api.error";
-import { tokenRepository } from "../repositories/token.repository";
-import { userRepository } from "../repositories/user.repository";
-import { ITokenPayload, ITokensPair } from "../types/token.types";
-import { IUserCredentials } from "../types/user.type";
-import { passwordService } from "./password.service";
-import { tokenService } from "./token.service";
+import {ApiError} from "../errors/api.error";
+import {tokenRepository} from "../repositories/token.repository";
+import {userRepository} from "../repositories/user.repository";
+import {ITokenPayload, ITokensPair} from "../types/token.types";
+import {IUserCredentials} from "../types/user.type";
+import {passwordService} from "./password.service";
+import {tokenService} from "./token.service";
+import {emailService} from "./email.service";
+import {EEmailAction} from "../enums/email.action.enum";
 
 class AuthService {
   public async register(dto: IUserCredentials): Promise<void> {
     try {
       const hashedPassword = await passwordService.hash(dto.password);
       await userRepository.register({ ...dto, password: hashedPassword });
+      await emailService.sendMail(dto.email, EEmailAction.REGISTER, {
+        name: 'Kokos',
+      });
     } catch (e) {
       throw new ApiError(e.message, e.status);
     }

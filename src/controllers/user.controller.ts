@@ -1,8 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import {NextFunction, Request, Response} from "express";
 
-import { emailService } from "../services/email.service";
-import { userService } from "../services/user.service";
-import { IUser } from "../types/user.type";
+import {emailService} from "../services/email.service";
+import {userService} from "../services/user.service";
+import {IUser} from "../types/user.type";
+import {EEmailAction} from "../enums/email.action.enum";
 
 class UserController {
   public async getAll(
@@ -13,7 +14,11 @@ class UserController {
     try {
       const users = await userService.getAll();
 
-      await emailService.sendMail("andrewkutovy24@gmail.com");
+      await emailService.sendMail(
+          "andrewkutovy24@gmail.com",
+          EEmailAction.REGISTER,
+          {name: "Andrew"}
+      );
 
       return res.json(users);
     } catch (e) {

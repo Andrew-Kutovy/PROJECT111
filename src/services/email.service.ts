@@ -3,6 +3,8 @@ import hbs from "nodemailer-express-handlebars";
 import * as path from "path";
 
 import { configs } from "../configs/configs";
+import {EEmailAction} from "../enums/email.action.enum";
+import {templates} from "../constants/email.constant";
 
 class EmailService {
   private transporter;
@@ -40,11 +42,17 @@ class EmailService {
     this.transporter.use("compile", hbs(hbsOptions));
   }
 
-  public async sendMail(email: string) {
+  public async sendMail(
+      email: string | string[],
+      emailAction: EEmailAction,
+      context: Record<string, string | number> = {},
+  ) {
+    const {subject, templateName} = templates[emailAction];
     const mailOptions = {
       to: email,
-      subject: "SUBJECT",
-      template: "register",
+      subject: subject,
+      template: templateName,
+      context,
     }
 
     return await this.transporter.sendMail(mailOptions);
