@@ -3,8 +3,8 @@ import hbs from "nodemailer-express-handlebars";
 import * as path from "path";
 
 import { configs } from "../configs/configs";
-import {EEmailAction} from "../enums/email.action.enum";
-import {templates} from "../constants/email.constant";
+import { templates } from "../constants/email.constant";
+import { EEmailAction } from "../enums/email.action.enum";
 
 class EmailService {
   private transporter;
@@ -29,12 +29,13 @@ class EmailService {
           "email-templates",
           "layouts",
         ),
-      partialsDir: path.join(process.cwd(),
+        partialsDir: path.join(
+          process.cwd(),
           "src",
           "email-templates",
           "partials",
-      )
-    },
+        ),
+      },
       viewPath: path.join(process.cwd(), "src", "email-templates", "views"),
       extName: ".hbs",
     };
@@ -43,17 +44,18 @@ class EmailService {
   }
 
   public async sendMail(
-      email: string | string[],
-      emailAction: EEmailAction,
-      context: Record<string, string | number> = {},
+    email: string | string[],
+    emailAction: EEmailAction,
+    context: Record<string, string | number> = {},
   ) {
-    const {subject, templateName} = templates[emailAction];
+    const { subject, templateName } = templates[emailAction];
+    context.frontUrl = configs.FRONT_URL;
     const mailOptions = {
       to: email,
-      subject: subject,
+      subject,
       template: templateName,
       context,
-    }
+    };
 
     return await this.transporter.sendMail(mailOptions);
   }

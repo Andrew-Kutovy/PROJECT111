@@ -4,26 +4,26 @@ import { EActionTokenType } from "../enums/actionTokenType.enum";
 import { IUser } from "./user.type";
 
 export interface ITokenPayload {
-    userId: string;
-    name: string;
+  userId: string;
+  name: string;
 }
 
 export interface ITokensPair {
-    accessToken: string;
-    refreshToken: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface IToken extends Document {
-    accessToken: string;
-    refreshToken: string;
-    _userId: Types.ObjectId | IUser;
+  accessToken: string;
+  refreshToken: string;
+  _userId: Types.ObjectId | IUser;
 }
 
 export interface IActionTokenDocument extends Document {
-    token: string;
-    type: EActionTokenType;
-    _userId: Types.ObjectId | IUser;
+  token: string;
+  type: EActionTokenType;
+  _userId: Types.ObjectId | IUser;
 }
 
 export interface IActionToken
-    extends Pick<IActionTokenDocument, "token" | "type" | "_userId"> {}
+  extends Pick<IActionTokenDocument, "token" | "type" | "_userId"> {}

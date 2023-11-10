@@ -48,8 +48,8 @@ class AuthService {
       }
 
       const isMatched = await passwordService.compare(
-          dto.password,
-          user.password,
+        dto.password,
+        user.password,
       );
       if (!isMatched) {
         throw new ApiError("Invalid credentials provided", 401);
@@ -68,8 +68,8 @@ class AuthService {
   }
 
   public async refresh(
-      payload: ITokenPayload,
-      refreshToken: string,
+    payload: ITokenPayload,
+    refreshToken: string,
   ): Promise<ITokensPair> {
     try {
       const tokensPair = tokenService.generateTokenPair({
@@ -116,8 +116,8 @@ class AuthService {
       }
       await Promise.all([
         actionTokenRepository.deleteManyByUserIdAndType(
-            payload.userId,
-            EActionTokenType.activate,
+          payload.userId,
+          EActionTokenType.activate,
         ),
         userRepository.setStatus(payload.userId, EUserStatus.active),
       ]);

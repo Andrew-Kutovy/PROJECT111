@@ -11,7 +11,7 @@ const router = Router();
 router.post(
   "/register",
   commonMiddleware.isBodyValid(UserValidator.register),
-  userMiddleware.isEmailUniq,
+  userMiddleware.isEmailUniq, //have one problem with find by email. Alredy return - "email alredy exist"!!((
   authController.register,
 );
 router.post(
@@ -20,13 +20,13 @@ router.post(
   authController.login,
 );
 
+router.post("/refresh", authMiddleware.checkRefreshToken, authController.login);
+
+router.post("/logout", authMiddleware.checkAccessToken, authController.logout);
 router.post(
-    "/refresh",
-    authMiddleware.checkRefreshToken,
-    authController.login,
+  "/logout-all",
+  authMiddleware.checkAccessToken,
+  authController.logoutAll,
 );
-
-router.post("/logout", authMiddleware.checkAccessToken, authController.logout,);
-router.post("/logout-all", authMiddleware.checkAccessToken, authController.logoutAll,);
-
+router.put("/activate", authController.activate);
 export const authRouter = router;

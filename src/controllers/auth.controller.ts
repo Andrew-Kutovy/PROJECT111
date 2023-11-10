@@ -5,9 +5,9 @@ import { ITokenPayload, ITokensPair } from "../types/token.types";
 
 class AuthController {
   public async register(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<void>> {
     try {
       await authService.register(req.body);
@@ -19,9 +19,9 @@ class AuthController {
   }
 
   public async login(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<ITokensPair>> {
     try {
       const tokensPair = await authService.login(req.body);
@@ -33,9 +33,9 @@ class AuthController {
   }
 
   public async refresh(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<ITokensPair>> {
     try {
       const tokenPayload = req.res.locals.tokenPayload as ITokenPayload;
@@ -50,9 +50,9 @@ class AuthController {
   }
 
   public async logout(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<void>> {
     try {
       const accessToken = req.res.locals.accessToken as string;
@@ -66,9 +66,9 @@ class AuthController {
   }
 
   public async logoutAll(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<void>> {
     try {
       const tokenPayload = req.res.locals.tokenPayload as ITokenPayload;
@@ -82,9 +82,9 @@ class AuthController {
   }
 
   public async activate(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<void>> {
     try {
       const actionToken = req.query.actionToken as string;
@@ -98,9 +98,9 @@ class AuthController {
   }
 
   public async sendActivationToken(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<void>> {
     try {
       const tokenPayload = req.res.locals.tokenPayload as ITokenPayload;
