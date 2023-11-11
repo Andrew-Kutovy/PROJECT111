@@ -5,7 +5,6 @@ import { EUserStatus } from "../enums/user-status.enum";
 
 export interface IUser extends Document {
   name?: string;
-  age?: number;
   role?: ERoles;
   email: string;
   password: string;

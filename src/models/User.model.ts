@@ -9,11 +9,6 @@ const userSchema = new Schema(
     name: {
       type: String,
     },
-    age: {
-      type: Number,
-      min: [1, "Minimum age is 1"],
-      max: [199, "Maximum age is 199"],
-    },
     role: {
       type: String,
       enum: ERoles,

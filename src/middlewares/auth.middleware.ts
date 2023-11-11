@@ -45,7 +45,6 @@ class AuthMiddleware {
       if (!accessToken) {
         throw new ApiError("No Token!", 401);
       }
-      // const payload = tokenService
 
       const payload = tokenService.checkToken(accessToken, "access");
       const entity = await tokenRepository.findOne({ accessToken });

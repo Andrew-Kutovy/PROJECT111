@@ -1,6 +1,6 @@
 export enum ERoles {
-    buyer = "buyer",
-    seller = "seller",
-    manager = "manager",
-    admin = "admin",
+  buyer = "buyer",
+  seller = "seller",
+  manager = "manager",
+  admin = "admin",
 }
