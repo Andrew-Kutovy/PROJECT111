@@ -5,7 +5,7 @@ import { IAdvert } from "../types/advert.type";
 
 class AdvertRepository {
   public async getAll(): Promise<IAdvert[]> {
-    return await Advert.find().populate("_userId");
+    return await Advert.find();
   }
   public async getOneByParams(params: FilterQuery<IAdvert>): Promise<IAdvert> {
     return await Advert.findOne(params);

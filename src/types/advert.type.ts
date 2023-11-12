@@ -7,8 +7,8 @@ export interface IAdvert extends Document {
   description: string;
   price: number;
   currency: ECurrency;
-  location: string;
-  producer: string;
+  region: string;
+  brand: string;
   model: string;
   userCurrency: ECurrency;
   userPrice: number;
@@ -18,4 +18,5 @@ export interface IAdvert extends Document {
   convertedPrice: number;
   exchangeRate: number;
   lastPriceUpdate: Date;
+  photo: string;
 }

@@ -1,10 +1,12 @@
 import { NextFunction, Request, Response } from "express";
+import { UploadedFile } from "express-fileupload";
 
 import { ECurrency } from "../enums/currency.enum";
 import { advertService } from "../services/advert.service";
 import { updatePriceService } from "../services/update-price.service";
 import { IAdvert } from "../types/advert.type";
 import { ITokenPayload } from "../types/token.types";
+import {advertPresenter} from "../presenters/advert.presenter";
 
 class AdvertController {
   public async createAdvert(
@@ -119,6 +121,18 @@ class AdvertController {
     } catch (e) {
       next(e);
     }
+  }
+
+  public async uploadPhoto(req: Request, res: Response, next: NextFunction): Promise<Response<IAdvert>> {
+    try {
+      const { advertId } = req.params;
+      const photo = req.files.photo as UploadedFile;
+      const car = await advertService.uploadPhoto(photo, advertId);
+
+      const response = advertPresenter.present(car);
+
+      return res.json(response);
+    } catch (e) {}
   }
 }
 

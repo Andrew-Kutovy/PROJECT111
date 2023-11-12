@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { advertController } from "../controllers/advert.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
+import { filesMiddleware } from "../middlewares/files.middleware";
 
 const router = Router();
 
@@ -33,6 +34,11 @@ router.delete(
   authMiddleware.checkAccessToken,
   //commonMiddleware.isIdValid("advertId"),
   advertController.deleteAdvert,
+);
+router.post(
+  "/:advertId/photo",
+  filesMiddleware.isPhotoValid,
+  advertController.uploadPhoto,
 );
 
 export const advertRouter = router;

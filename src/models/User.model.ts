@@ -17,7 +17,7 @@ const userSchema = new Schema(
       type: String,
       enum: EUserStatus,
       required: true,
-      default: EUserStatus.inactive,
+      default: EUserStatus.base,
     },
     email: {
       type: String,
@@ -28,6 +28,7 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
+      selected: false,
       required: true,
     },
   },

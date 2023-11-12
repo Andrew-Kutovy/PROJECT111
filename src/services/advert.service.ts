@@ -1,6 +1,10 @@
-import { ApiError } from "../errors/api.error";
-import { advertRepository } from "../repositories/advert.repository";
-import { IAdvert } from "../types/advert.type";
+import {UploadedFile} from "express-fileupload";
+
+import {ApiError} from "../errors/api.error";
+import {advertRepository} from "../repositories/advert.repository";
+import {IAdvert} from "../types/advert.type";
+import {s3Service} from "./s3.service";
+import {EFileTypes} from "../types/file.type";
 
 class AdvertService {
   public async getAll(): Promise<IAdvert[]> {
@@ -23,6 +27,16 @@ class AdvertService {
   public async deleteAdvert(advertId: string, userId: string): Promise<void> {
     await this.checkAbilityToManage(userId, advertId);
     await advertRepository.deleteAdvert(advertId);
+  }
+
+  public async uploadPhoto(photo: UploadedFile, advertId: string): Promise<IAdvert> {
+    const advert = await advertRepository.findById(advertId);
+
+    const filePath = await s3Service.uploadFile(photo, EFileTypes.Car, advertId);
+
+    const updatedAdvert = await advertRepository.updateAdvert(advertId, {photo: filePath})
+
+    return updatedAdvert;
   }
 
   private async checkAbilityToManage(

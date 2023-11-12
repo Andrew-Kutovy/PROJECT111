@@ -4,31 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+ activate">
-      <change afterPath="$PROJECT_DIR$/src/controllers/advert.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/crons/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/crons/update-price.cron.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enums/currency.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Advert.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repositories/advert.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routers/advert.router.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/advert.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/currency-converter.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/update-price.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/advert.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validators/advert.validator.ts" afterDir="false" />
+    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+">
+      <change afterPath="$PROJECT_DIR$/src/configs/file.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/middlewares/files.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/middlewares/role.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/presenters/advert.presenter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/s3.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/file.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/role.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/role.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/common.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/common.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Token.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Token.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs/configs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/configs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/advert.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/advert.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Advert.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Advert.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/User.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/password.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/password.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/user.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/user.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validators/user.validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/validators/user.validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/advert.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/advert.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/advert.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/advert.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/advert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/advert.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/advert.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/advert.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="activate" />
+        <entry key="$PROJECT_DIR$" value="advert" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,11 +62,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "advert",
+    "git-widget-placeholder": "aws",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.eslint": "",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -115,7 +110,7 @@
       <workItem from="1699524624157" duration="24430000" />
       <workItem from="1699572405390" duration="4750000" />
       <workItem from="1699577474320" duration="103000" />
-      <workItem from="1699598968344" duration="41879000" />
+      <workItem from="1699598968344" duration="54425000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
@@ -197,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699617556133</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="+">
+      <option name="closed" value="true" />
+      <created>1699736644829</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699736644829</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +212,7 @@
     <MESSAGE value="+ mailer" />
     <MESSAGE value="+ LogOut" />
     <MESSAGE value="+ activate" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ activate" />
+    <MESSAGE value="+" />
+    <option name="LAST_COMMIT_MESSAGE" value="+" />
   </component>
 </project>

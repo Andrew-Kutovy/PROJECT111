@@ -22,11 +22,11 @@ const advertSchema = new Schema(
       enum: ECurrency,
       required: true,
     },
-    location: {
+    region: {
       type: String,
       required: true,
     },
-    producer: {
+    brand: {
       type: String,
       required: true,
     },
@@ -64,6 +64,9 @@ const advertSchema = new Schema(
       type: Types.ObjectId,
       ref: User,
       required: true,
+    },
+    photo: {
+      type: String,
     },
   },
   {
