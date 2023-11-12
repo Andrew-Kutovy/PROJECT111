@@ -2,11 +2,12 @@ import { NextFunction, Request, Response } from "express";
 import { UploadedFile } from "express-fileupload";
 
 import { ECurrency } from "../enums/currency.enum";
+import { User } from "../models/User.model";
+import { advertPresenter } from "../presenters/advert.presenter";
 import { advertService } from "../services/advert.service";
 import { updatePriceService } from "../services/update-price.service";
 import { IAdvert } from "../types/advert.type";
 import { ITokenPayload } from "../types/token.types";
-import {advertPresenter} from "../presenters/advert.presenter";
 
 class AdvertController {
   public async createAdvert(
@@ -59,6 +60,13 @@ class AdvertController {
 
       const advert = await advertService.createAdvert(advertData, userId);
 
+      const user = await User.findById(userId);
+
+      if (user) {
+        // Увеличить счетчик объявлений пользователя
+        user.incrementAdsCount();
+        await user.save();
+      }
       res.status(201).json(advert);
     } catch (e) {
       next(e);
@@ -123,7 +131,11 @@ class AdvertController {
     }
   }
 
-  public async uploadPhoto(req: Request, res: Response, next: NextFunction): Promise<Response<IAdvert>> {
+  public async uploadPhoto(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<IAdvert>> {
     try {
       const { advertId } = req.params;
       const photo = req.files.photo as UploadedFile;

@@ -1,10 +1,13 @@
 import * as jwt from "jsonwebtoken";
 
 import { configs } from "../configs/configs";
+import { ERoles } from "../enums/role.enum";
 import { ApiError } from "../errors/api.error";
-import {ITokenAndRolePayload, ITokenPayload, ITokensPair} from "../types/token.types";
-import {ERoles} from "../enums/role.enum";
-import {Secret} from "jsonwebtoken";
+import {
+  ITokenAndRolePayload,
+  ITokenPayload,
+  ITokensPair,
+} from "../types/token.types";
 
 class TokenService {
   public generateTokenPair(payload: ITokenPayload): ITokensPair {
@@ -40,30 +43,34 @@ class TokenService {
     }
   }
 
-  public checkTokenAndRole(token: string, type: 'access' | 'refresh', expectedRole: ERoles): ITokenAndRolePayload {
+  public checkTokenAndRole(
+    token: string,
+    type: "access" | "refresh",
+    expectedRole: ERoles,
+  ): ITokenAndRolePayload {
     try {
       let secret: string;
 
       switch (type) {
-        case 'access':
+        case "access":
           secret = configs.JWT_ACCESS_SECRET;
           break;
-        case 'refresh':
+        case "refresh":
           secret = configs.JWT_REFRESH_SECRET;
           break;
         default:
-          throw new ApiError('Invalid token type', 400);
+          throw new ApiError("Invalid token type", 400);
       }
 
       const payload = jwt.verify(token, secret) as ITokenAndRolePayload;
 
       if (payload.role !== expectedRole) {
-        throw new ApiError('Invalid role in the token', 403);
+        throw new ApiError("Invalid role in the token", 403);
       }
 
       return payload;
     } catch (e) {
-      throw new ApiError('Token not valid!', 401);
+      throw new ApiError("Token not valid!", 401);
     }
   }
 

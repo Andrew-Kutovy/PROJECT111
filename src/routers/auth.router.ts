@@ -27,7 +27,6 @@ router.post(
     "/register/manager",
     authMiddleware.checkAccessAdminToken,
     commonMiddleware.isBodyValid(UserValidator.sellerRegister),
-    commonMiddleware.isBodyValid(UserValidator.login),
     roleMiddleware.isManager,
     userMiddleware.isEmailUniq,
     authController.register

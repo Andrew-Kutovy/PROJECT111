@@ -1,11 +1,10 @@
 import { Router } from "express";
 
 import { advertController } from "../controllers/advert.controller";
+import { advertMiddleware } from "../middlewares/advert.middlevare";
 import { authMiddleware } from "../middlewares/auth.middleware";
 import { filesMiddleware } from "../middlewares/files.middleware";
-import {userMiddleware} from "../middlewares/user.middleware";
-import {roleMiddleware} from "../middlewares/role.middleware";
-import {advertMiddleware} from "../middlewares/advert.middlevare";
+import { roleMiddleware } from "../middlewares/role.middleware";
 
 const router = Router();
 
@@ -15,7 +14,10 @@ router.post(
   "/",
   authMiddleware.checkAccessToken,
   roleMiddleware.isSeller,
-  advertMiddleware.Censorship,
+  advertMiddleware.existingCars,
+  advertMiddleware.censorship,
+  advertMiddleware.checkModel,
+  advertMiddleware.checkBrand,
   advertController.createAdvert,
 );
 

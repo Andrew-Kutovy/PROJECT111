@@ -20,6 +20,11 @@ const userSchema = new Schema(
       required: true,
       default: EUserStatus.base,
     },
+    Ads: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     email: {
       type: String,
       required: true,
@@ -38,5 +43,9 @@ const userSchema = new Schema(
     versionKey: false,
   },
 );
+
+userSchema.methods.incrementAdsCount = function () {
+  this.Ads++;
+};
 
 export const User = model<IUser>("user", userSchema);

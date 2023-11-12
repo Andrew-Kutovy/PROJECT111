@@ -25,7 +25,6 @@ class AuthService {
       const actionToken = tokenService.generateActionToken({
         userId: user._id,
         name: user.name,
-
       });
       await actionTokenRepository.create({
         token: actionToken,

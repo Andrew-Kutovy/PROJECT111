@@ -1,10 +1,9 @@
-import {NextFunction, Request, Response} from "express";
+import { NextFunction, Request, Response } from "express";
 
-import {ApiError} from "../errors/api.error";
-import {tokenRepository} from "../repositories/token.repository";
-import {tokenService} from "../services/token.service";
-import {userRepository} from "../repositories/user.repository";
-import {ERoles} from "../enums/role.enum";
+import { ERoles } from "../enums/role.enum";
+import { ApiError } from "../errors/api.error";
+import { tokenRepository } from "../repositories/token.repository";
+import { tokenService } from "../services/token.service";
 
 class AuthMiddleware {
   public async checkRefreshToken(
@@ -63,9 +62,9 @@ class AuthMiddleware {
     }
   }
   public async checkAccessAdminToken(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ) {
     try {
       const accessToken = req.get("Authorization");
@@ -74,8 +73,11 @@ class AuthMiddleware {
         throw new ApiError("No Token!", 401);
       }
 
-      const payload = tokenService.checkTokenAndRole(accessToken, "access", ERoles.admin);
-      // Убедитесь, что ваши токены при создании и обновлении добавляют роль пользователя в поле `role`.
+      const payload = tokenService.checkTokenAndRole(
+        accessToken,
+        "access",
+        ERoles.admin,
+      );
 
       const entity = await tokenRepository.findOne({ accessToken });
 
@@ -91,7 +93,6 @@ class AuthMiddleware {
       next(e);
     }
   }
-
 }
 
 export const authMiddleware = new AuthMiddleware();

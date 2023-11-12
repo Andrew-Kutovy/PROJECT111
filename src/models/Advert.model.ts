@@ -1,6 +1,8 @@
 import { model, Schema, Types } from "mongoose";
 
+import { EBrand } from "../enums/brand.enum";
 import { ECurrency } from "../enums/currency.enum";
+import { EModel } from "../enums/model.enum";
 import { IAdvert } from "../types/advert.type";
 import { User } from "./User.model";
 
@@ -28,10 +30,12 @@ const advertSchema = new Schema(
     },
     brand: {
       type: String,
+      enum: EBrand,
       required: true,
     },
     model: {
       type: String,
+      enum: EModel,
       required: true,
     },
     userCurrency: {
