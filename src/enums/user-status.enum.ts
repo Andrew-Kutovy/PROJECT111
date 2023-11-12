@@ -1,5 +1,4 @@
 export enum EUserStatus {
-  active = "active",
-  inactive = "inactive",
-  deleted = "deleted",
+  base = "base",
+  premium = "premium",
 }

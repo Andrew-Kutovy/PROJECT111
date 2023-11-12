@@ -25,6 +25,33 @@ class AuthService {
       const actionToken = tokenService.generateActionToken({
         userId: user._id,
         name: user.name,
+
+      });
+      await actionTokenRepository.create({
+        token: actionToken,
+        type: EActionTokenType.activate,
+        _userId: user._id,
+      });
+      await emailService.sendMail(dto.email, EEmailAction.REGISTER, {
+        name: dto.name,
+        actionToken,
+      });
+    } catch (e) {
+      throw new ApiError(e.message, e.status);
+    }
+  }
+
+  public async sellerRegister(dto: IUser): Promise<void> {
+    try {
+      const hashedPassword = await passwordService.hash(dto.password);
+
+      const user = await userRepository.register({
+        ...dto,
+        password: hashedPassword,
+      });
+      const actionToken = tokenService.generateActionToken({
+        userId: user._id,
+        name: user.name,
       });
       await actionTokenRepository.create({
         token: actionToken,
@@ -119,7 +146,7 @@ class AuthService {
           payload.userId,
           EActionTokenType.activate,
         ),
-        userRepository.setStatus(payload.userId, EUserStatus.active),
+        userRepository.setStatus(payload.userId, EUserStatus.premium),
       ]);
     } catch (e) {
       throw new ApiError(e.message, e.status);
@@ -129,7 +156,7 @@ class AuthService {
   public async sendActivationToken(tokenPayload: ITokenPayload): Promise<void> {
     try {
       const user = await userRepository.findById(tokenPayload.userId);
-      if (user.status !== EUserStatus.inactive) {
+      if (user.status !== EUserStatus.premium) {
         throw new ApiError("User can not be activated", 403);
       }
 

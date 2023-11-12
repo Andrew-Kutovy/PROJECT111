@@ -18,6 +18,20 @@ class AuthController {
     }
   }
 
+  public async sellerRegister(
+      req: Request,
+      res: Response,
+      next: NextFunction,
+  ): Promise<Response<void>> {
+    try {
+      await authService.register(req.body);
+
+      return res.sendStatus(201);
+    } catch (e) {
+      next(e);
+    }
+  }
+
   public async login(
     req: Request,
     res: Response,

@@ -1,8 +1,10 @@
-import { NextFunction, Request, Response } from "express";
+import {NextFunction, Request, Response} from "express";
 
-import { ApiError } from "../errors/api.error";
-import { tokenRepository } from "../repositories/token.repository";
-import { tokenService } from "../services/token.service";
+import {ApiError} from "../errors/api.error";
+import {tokenRepository} from "../repositories/token.repository";
+import {tokenService} from "../services/token.service";
+import {userRepository} from "../repositories/user.repository";
+import {ERoles} from "../enums/role.enum";
 
 class AuthMiddleware {
   public async checkRefreshToken(
@@ -60,6 +62,36 @@ class AuthMiddleware {
       next(e);
     }
   }
+  public async checkAccessAdminToken(
+      req: Request,
+      res: Response,
+      next: NextFunction,
+  ) {
+    try {
+      const accessToken = req.get("Authorization");
+
+      if (!accessToken) {
+        throw new ApiError("No Token!", 401);
+      }
+
+      const payload = tokenService.checkTokenAndRole(accessToken, "access", ERoles.admin);
+      // Убедитесь, что ваши токены при создании и обновлении добавляют роль пользователя в поле `role`.
+
+      const entity = await tokenRepository.findOne({ accessToken });
+
+      if (!entity) {
+        throw new ApiError("Token not valid", 401);
+      }
+
+      req.res.locals.tokenPayload = payload;
+      req.res.locals.accessToken = accessToken;
+
+      next();
+    } catch (e) {
+      next(e);
+    }
+  }
+
 }
 
 export const authMiddleware = new AuthMiddleware();

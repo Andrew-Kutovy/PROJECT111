@@ -12,6 +12,7 @@ const userSchema = new Schema(
     role: {
       type: String,
       enum: ERoles,
+      default: ERoles.buyer,
     },
     status: {
       type: String,

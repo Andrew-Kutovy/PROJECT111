@@ -2,10 +2,15 @@ import { Document, Types } from "mongoose";
 
 import { EActionTokenType } from "../enums/actionTokenType.enum";
 import { IUser } from "./user.type";
+import {ERoles} from "../enums/role.enum";
 
 export interface ITokenPayload {
   userId: string;
   name: string;
+}
+
+export interface ITokenAndRolePayload extends ITokenPayload {
+  role: ERoles;
 }
 
 export interface ITokensPair {
