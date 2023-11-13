@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+ upload photo">
+    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="COMPLETE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/role.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/role.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/auth.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/user.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/user.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/s3.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/s3.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "roles",
+    "git-widget-placeholder": "MASTER",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -116,7 +108,7 @@
       <workItem from="1699577474320" duration="103000" />
       <workItem from="1699598968344" duration="70927000" />
       <workItem from="1699816821823" duration="26433000" />
-      <workItem from="1699862233569" duration="4867000" />
+      <workItem from="1699862233569" duration="5495000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
@@ -238,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699835781083</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="+ upload photo">
+      <option name="closed" value="true" />
+      <created>1699867663193</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1699867663193</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +252,7 @@
     <MESSAGE value="+ activate" />
     <MESSAGE value="+" />
     <MESSAGE value="+ upload photo" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ upload photo" />
+    <MESSAGE value="COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="COMPLETE" />
   </component>
 </project>
