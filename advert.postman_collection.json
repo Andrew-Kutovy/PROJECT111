@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "7c0f5867-d263-404c-97a4-8f7c017a07e1",
+		"name": "advert",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28748203"
+	},
+	"item": [
+		{
+			"name": "All advert",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_HOST}}/adverts/654f3795c02f2e3224ce6709",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts",
+						"654f3795c02f2e3224ce6709"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create advert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"title\": \"fgfdv\",\r\n\"description\": \"hghg\",\r\n\"price\": 23000,\r\n\"currency\": \"EUR\",\r\n\"region\": \"Ukr\",\r\n\"brand\": \"BMW\",\r\n\"model\": \"M3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/adverts",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload photo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/home/Pictures/IMG_4438.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/adverts/654fe8b5f9cb8754b98982d5/photo",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts",
+						"654fe8b5f9cb8754b98982d5",
+						"photo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "advert by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_HOST}}/adverts/655139cfc234c166d04047b1",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts",
+						"655139cfc234c166d04047b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STATISTIC advert by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/adverts/statistic/65518c90939fa6a6ff6af668",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts",
+						"statistic",
+						"65518c90939fa6a6ff6af668"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "advert by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/adverts/654fe2739bbb80c2ebb254f0",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts",
+						"654fe2739bbb80c2ebb254f0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "advert by ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\": 1999\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/adverts/654fe8b5f9cb8754b98982d5",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"adverts",
+						"654fe8b5f9cb8754b98982d5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
