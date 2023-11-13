@@ -12,6 +12,8 @@ class AdvertMiddleware {
     this.censorship = this.censorship.bind(this);
   }
   private censorWords: string[] = ["бля", "сука", "нахуй"];
+  private editedCount: number = 0;
+  private readonly maxEditCount: number = 3;
 
   public async existingCars(req: Request, res: Response, next: NextFunction) {
     try {
@@ -44,6 +46,14 @@ class AdvertMiddleware {
 
       if (this.containsCensoredWords(description)) {
         throw new ApiError("Не прошло проверку на цензуру в описании", 409);
+      }
+
+      // Перевірка кількості редагувань
+      if (this.editedCount >= this.maxEditCount) {
+        // Якщо перевищено ліміт редагувань, відправляємо оголошення на перевірку менеджеру
+        // і перевідмічаємо його як неактивне
+        this.markAdAsInactive();
+        this.notifyManager();
       }
 
       next();
@@ -144,6 +154,13 @@ class AdvertMiddleware {
     }
   }
 
+  private markAdAsInactive() {
+    // Логіка встановлення оголошення в статус неактивного
+  }
+
+  private notifyManager() {
+    // Логіка відправлення повідомлення менеджеру про неактивне оголошення
+  }
   private containsCensoredWords(text: string | undefined): boolean {
     if (!text) {
       return false;

@@ -2,9 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import { UploadedFile } from "express-fileupload";
 
 import { ECurrency } from "../enums/currency.enum";
-import { User } from "../models/User.model";
 import { advertPresenter } from "../presenters/advert.presenter";
 import { advertService } from "../services/advert.service";
+import { advertsCountService } from "../services/adverts.count.service";
+import { currencyConverterService } from "../services/currency-converter.service";
 import { updatePriceService } from "../services/update-price.service";
 import { IAdvert } from "../types/advert.type";
 import { ITokenPayload } from "../types/token.types";
@@ -21,34 +22,9 @@ class AdvertController {
       const userCurrency: ECurrency = req.body.currency;
       const userPrice: number = req.body.price;
 
-      // Перевірка валідності введених даних
-      if (!Object.values(ECurrency).includes(userCurrency)) {
-        throw new Error("Invalid currency specified");
-      }
+      const { priceInEUR, priceInUSD, priceInUAH, rateUSD } =
+        await currencyConverterService.convertCurrency(userCurrency, userPrice);
 
-      // Отримання курсів валют з API Приватбанку
-      const exchangeRates = await updatePriceService.getExchangeRates();
-
-      // Виконання конвертації валют для всіх трьох валют
-      const rateEUR = exchangeRates.find((item) => item.ccy === ECurrency.EUR);
-      const rateUSD = exchangeRates.find((item) => item.ccy === ECurrency.USD);
-
-      const priceInEUR =
-        userCurrency !== ECurrency.EUR
-          ? userPrice / parseFloat(rateEUR?.buy || "1")
-          : userPrice;
-
-      const priceInUSD =
-        userCurrency !== ECurrency.USD
-          ? userPrice / parseFloat(rateUSD?.buy || "1")
-          : userPrice;
-
-      const priceInUAH =
-        userCurrency !== ECurrency.UAH
-          ? userPrice * parseFloat(rateUSD?.sale || "1")
-          : userPrice;
-
-      // Збереження оголошення з конвертованою ціною та курсом
       const advertData: IAdvert = {
         ...req.body,
         convertedPrice: userPrice,
@@ -60,13 +36,8 @@ class AdvertController {
 
       const advert = await advertService.createAdvert(advertData, userId);
 
-      const user = await User.findById(userId);
+      advertsCountService.advertsCounter(req, res, next);
 
-      if (user) {
-        // Увеличить счетчик объявлений пользователя
-        user.incrementAdsCount();
-        await user.save();
-      }
       res.status(201).json(advert);
     } catch (e) {
       next(e);

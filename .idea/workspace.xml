@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+ upload photo">
-      <change afterPath="$PROJECT_DIR$/src/enums/brand.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enums/model.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/statistic.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/adverts.count.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/advert.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/advert.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/email-templates/views/register.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/email-templates/views/register.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/email.action.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/email.action.enum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middlewares/advert.middlevare.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/advert.middlevare.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Advert.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Advert.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/User.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/advert.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/advert.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/auth.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/user.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/user.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/currency-converter.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/currency-converter.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +111,7 @@
       <workItem from="1699572405390" duration="4750000" />
       <workItem from="1699577474320" duration="103000" />
       <workItem from="1699598968344" duration="70927000" />
-      <workItem from="1699816821823" duration="14621000" />
+      <workItem from="1699816821823" duration="17511000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
@@ -228,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699815382969</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="+ upload photo">
+      <option name="closed" value="true" />
+      <created>1699832474988</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699832474988</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
