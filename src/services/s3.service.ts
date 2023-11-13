@@ -1,10 +1,10 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import crypto from "crypto";
 import { UploadedFile } from "express-fileupload";
+import * as path from "path";
 
 import { configs } from "../configs/configs";
-import {EFileTypes} from "../types/file.type";
-import * as path from "path";
+import { EFileTypes } from "../types/file.type";
 
 class S3Service {
   constructor(
@@ -17,8 +17,12 @@ class S3Service {
     }),
   ) {}
 
-  public async uploadFile(file: UploadedFile, itemType: EFileTypes, itemId: string) {
-      const filePath = this.buildPath(file.name, itemType, itemId);
+  public async uploadFile(
+    file: UploadedFile,
+    itemType: EFileTypes,
+    itemId: string,
+  ) {
+    const filePath = this.buildPath(file.name, itemType, itemId);
     await this.s3Client.send(
       new PutObjectCommand({
         Key: filePath,
@@ -31,8 +35,14 @@ class S3Service {
     return filePath;
   }
 
-  public buildPath(fileName: string, fileType: EFileTypes, fileId: string): string{
-      return `${fileType}/${fileId}/${crypto.randomUUID()}${path.extname(fileName)}`;
+  public buildPath(
+    fileName: string,
+    fileType: EFileTypes,
+    fileId: string,
+  ): string {
+    return `${fileType}/${fileId}/${crypto.randomUUID()}${path.extname(
+      fileName,
+    )}`;
   }
 }
 

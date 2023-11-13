@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 import { ERoles } from "../enums/role.enum";
 import { ApiError } from "../errors/api.error";
+import { User } from "../models/User.model";
 import { tokenRepository } from "../repositories/token.repository";
 import { tokenService } from "../services/token.service";
 
@@ -68,25 +69,13 @@ class AuthMiddleware {
   ) {
     try {
       const accessToken = req.get("Authorization");
+      const payload = tokenService.checkToken(accessToken, "access");
 
-      if (!accessToken) {
-        throw new ApiError("No Token!", 401);
+      const user = await User.findById(payload.userId);
+
+      if (user.role !== ERoles.admin) {
+        throw new ApiError("Only admin can create manager", 401);
       }
-
-      const payload = tokenService.checkTokenAndRole(
-        accessToken,
-        "access",
-        ERoles.admin,
-      );
-
-      const entity = await tokenRepository.findOne({ accessToken });
-
-      if (!entity) {
-        throw new ApiError("Token not valid", 401);
-      }
-
-      req.res.locals.tokenPayload = payload;
-      req.res.locals.accessToken = accessToken;
 
       next();
     } catch (e) {

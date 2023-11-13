@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+ upload photo">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/configs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/configs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/advert.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/advert.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/advert.middlevare.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/advert.middlevare.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/advert.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/advert.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/role.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/role.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routers/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/auth.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/advert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/advert.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/statistic.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/statistic.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/user.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/user.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/s3.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/s3.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "C:\\Users\\home\\Desktop\\untitled\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\home\\Desktop\\PROJECT\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -116,6 +116,7 @@
       <workItem from="1699577474320" duration="103000" />
       <workItem from="1699598968344" duration="70927000" />
       <workItem from="1699816821823" duration="26433000" />
+      <workItem from="1699862233569" duration="4867000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
