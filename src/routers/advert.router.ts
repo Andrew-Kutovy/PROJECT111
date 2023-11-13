@@ -6,6 +6,7 @@ import { authMiddleware } from "../middlewares/auth.middleware";
 import { commonMiddleware } from "../middlewares/common.middleware";
 import { filesMiddleware } from "../middlewares/files.middleware";
 import { roleMiddleware } from "../middlewares/role.middleware";
+import { AdvertValidator } from "../validators/advert.validator";
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router.post(
   advertMiddleware.censorship,
   advertMiddleware.checkModel,
   advertMiddleware.checkBrand,
+  commonMiddleware.isBodyValid(AdvertValidator.create),
   advertController.createAdvert,
 );
 
@@ -33,7 +35,7 @@ router.put(
   "/:advertId",
   authMiddleware.checkAccessToken,
   commonMiddleware.isIdValid("advertId"),
-  //commonMiddleware.isBodyValid(AdvertValidator.update),
+  commonMiddleware.isBodyValid(AdvertValidator.update),
   advertController.updateAdvert,
 );
 router.delete(
@@ -44,6 +46,7 @@ router.delete(
 );
 router.post(
   "/:advertId/photo",
+  authMiddleware.checkAccessToken,
   filesMiddleware.isPhotoValid,
   advertController.uploadPhoto,
 );

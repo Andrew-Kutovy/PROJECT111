@@ -43,12 +43,17 @@ class AuthMiddleware {
   ) {
     try {
       const accessToken = req.get("Authorization");
+      const payload = tokenService.checkToken(accessToken, "access");
+      const user = await User.findById(payload.userId);
 
-      if (!accessToken) {
-        throw new ApiError("No Token!", 401);
+      if (
+        !accessToken ||
+        (user && (user.role === ERoles.admin || user.role === ERoles.manager))
+      ) {
+      } else {
+        throw new ApiError("No Token or Access! ", 401);
       }
 
-      const payload = tokenService.checkToken(accessToken, "access");
       const entity = await tokenRepository.findOne({ accessToken });
 
       if (!entity) {
@@ -62,6 +67,34 @@ class AuthMiddleware {
       next(e);
     }
   }
+  public async checkAccessTokenOrSuperUser(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const accessToken = req.get("Authorization");
+      const payload = tokenService.checkToken(accessToken, "access");
+      const user = await User.findById(payload.userId);
+
+      if (!accessToken || user.role !== ERoles.admin) {
+        throw new ApiError("No Token!", 401);
+      }
+
+      const entity = await tokenRepository.findOne({ accessToken });
+
+      if (!entity) {
+        throw new ApiError("Token not valid", 401);
+      }
+      req.res.locals.tokenPayload = payload;
+      req.res.locals.accessToken = accessToken;
+
+      next();
+    } catch (e) {
+      next(e);
+    }
+  }
+
   public async checkAccessAdminToken(
     req: Request,
     res: Response,
