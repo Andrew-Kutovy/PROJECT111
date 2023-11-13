@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="COMPLETE +">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/advert.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/advert.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/advert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/advert.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/currency-converter.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/currency-converter.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validators/advert.validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/validators/advert.validator.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +113,7 @@
       <workItem from="1699598968344" duration="70927000" />
       <workItem from="1699816821823" duration="26433000" />
       <workItem from="1699862233569" duration="5883000" />
-      <workItem from="1699885476691" duration="17112000" />
+      <workItem from="1699885476691" duration="18401000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
@@ -272,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699904644021</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="COMPLETE +">
+      <option name="closed" value="true" />
+      <created>1699913367318</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1699913367318</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

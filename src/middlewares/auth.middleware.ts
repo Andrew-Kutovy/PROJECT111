@@ -43,28 +43,50 @@ class AuthMiddleware {
   ) {
     try {
       const accessToken = req.get("Authorization");
-      const payload = tokenService.checkToken(accessToken, "access");
-      const user = await User.findById(payload.userId);
-      const userRole = user.role;
 
-      const allowedRoles: ERoles[] = [ERoles.admin, ERoles.manager];
-      if (!accessToken || !allowedRoles.includes(userRole)) {
-        throw new ApiError("No Token! ", 401);
+      if (!accessToken) {
+        throw new ApiError("No Token!", 401);
       }
+
+      const payload = tokenService.checkToken(accessToken, "access");
 
       const entity = await tokenRepository.findOne({ accessToken });
 
       if (!entity) {
-        throw new ApiError("Token not valid", 401);
+        throw new ApiError("Token not valid!", 401);
       }
+
       req.res.locals.tokenPayload = payload;
       req.res.locals.accessToken = accessToken;
-
       next();
     } catch (e) {
       next(e);
     }
   }
+  // try {
+  //   const accessToken = req.get("Authorization");
+  //   const payload = tokenService.checkToken(accessToken, "access");
+  //   const user = await User.findById(payload.userId);
+  //   const userRole = user.role;
+  //
+  //   const allowedRoles: ERoles[] = [ERoles.admin, ERoles.manager];
+  //   if (!accessToken || !allowedRoles.includes(userRole)) {
+  //     throw new ApiError("No Token! ", 401);
+  //   }
+  //
+  //   const entity = await tokenRepository.findOne({ accessToken });
+  //
+  //   if (!entity) {
+  //     throw new ApiError("Token not valid", 401);
+  //   }
+  //   req.res.locals.tokenPayload = payload;
+  //   req.res.locals.accessToken = accessToken;
+  //
+  //   next();
+  // } catch (e) {
+  //   next(e);
+  // }
+  // }
   public async checkAccessTokenOrSuperUser(
     req: Request,
     res: Response,
