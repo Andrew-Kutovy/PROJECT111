@@ -1,10 +1,10 @@
-import {UploadedFile} from "express-fileupload";
+import { UploadedFile } from "express-fileupload";
 
-import {ApiError} from "../errors/api.error";
-import {advertRepository} from "../repositories/advert.repository";
-import {IAdvert} from "../types/advert.type";
-import {s3Service} from "./s3.service";
-import {EFileTypes} from "../types/file.type";
+import { ApiError } from "../errors/api.error";
+import { advertRepository } from "../repositories/advert.repository";
+import { IAdvert } from "../types/advert.type";
+import { EFileTypes } from "../types/file.type";
+import { s3Service } from "./s3.service";
 
 class AdvertService {
   public async getAll(): Promise<IAdvert[]> {
@@ -29,12 +29,19 @@ class AdvertService {
     await advertRepository.deleteAdvert(advertId);
   }
 
-  public async uploadPhoto(photo: UploadedFile, advertId: string): Promise<IAdvert> {
-    const advert = await advertRepository.findById(advertId);
+  public async uploadPhoto(
+    photo: UploadedFile,
+    advertId: string,
+  ): Promise<IAdvert> {
+    const filePath = await s3Service.uploadFile(
+      photo,
+      EFileTypes.Car,
+      advertId,
+    );
 
-    const filePath = await s3Service.uploadFile(photo, EFileTypes.Car, advertId);
-
-    const updatedAdvert = await advertRepository.updateAdvert(advertId, {photo: filePath})
+    const updatedAdvert = await advertRepository.updateAdvert(advertId, {
+      photo: filePath,
+    });
 
     return updatedAdvert;
   }

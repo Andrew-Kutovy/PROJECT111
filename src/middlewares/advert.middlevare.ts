@@ -5,6 +5,7 @@ import { EBrand } from "../enums/brand.enum";
 import { EModel } from "../enums/model.enum";
 import { EUserStatus } from "../enums/user-status.enum";
 import { ApiError } from "../errors/api.error";
+import { advertRepository } from "../repositories/advert.repository";
 import { userRepository } from "../repositories/user.repository";
 
 class AdvertMiddleware {
@@ -28,6 +29,28 @@ class AdvertMiddleware {
       if (user.status === EUserStatus.base && user.Ads === 1) {
         throw new Error(
           "Только пользователи с премиум-статусом могут создавать неограниченное количество объявлений.",
+        );
+      }
+
+      next();
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  public async checkStatus(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { userId } = req.res.locals.tokenPayload;
+
+      const user = await userRepository.findById(userId);
+
+      if (!user) {
+        throw new Error("Пользователь не найден");
+      }
+
+      if (user.status === EUserStatus.base) {
+        throw new Error(
+          "Только пользователи с премиум-статусом меют доступ к статистике.",
         );
       }
 
@@ -149,6 +172,23 @@ class AdvertMiddleware {
       }
 
       return next();
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  public async getByIdOrThrow(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { advertId } = req.params;
+
+      const advert = await advertRepository.findById(advertId);
+      if (!advert) {
+        throw new ApiError("Advert not found", 404);
+      }
+
+      req.res.locals = advert;
+
+      next();
     } catch (e) {
       next(e);
     }

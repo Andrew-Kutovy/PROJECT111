@@ -6,7 +6,7 @@ import { advertPresenter } from "../presenters/advert.presenter";
 import { advertService } from "../services/advert.service";
 import { advertsCountService } from "../services/adverts.count.service";
 import { currencyConverterService } from "../services/currency-converter.service";
-import { updatePriceService } from "../services/update-price.service";
+import { statisticService } from "../services/statistic.service";
 import { IAdvert } from "../types/advert.type";
 import { ITokenPayload } from "../types/token.types";
 
@@ -53,6 +53,20 @@ class AdvertController {
       const adverts = await advertService.getAll();
 
       return res.json(adverts);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  public async getStatistic(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<IAdvert[]>> {
+    try {
+      const statistic = await statisticService.getStatistic(req, res, next);
+
+      return res.json(statistic);
     } catch (e) {
       next(e);
     }

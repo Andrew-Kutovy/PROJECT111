@@ -3,10 +3,9 @@ import { Router } from "express";
 import { authController } from "../controllers/auth.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
 import { commonMiddleware } from "../middlewares/common.middleware";
+import { roleMiddleware } from "../middlewares/role.middleware";
 import { userMiddleware } from "../middlewares/user.middleware";
 import { UserValidator } from "../validators/user.validator";
-import {userController} from "../controllers/user.controller";
-import {roleMiddleware} from "../middlewares/role.middleware";
 
 const router = Router();
 
@@ -14,32 +13,30 @@ router.post(
   "/register/",
   commonMiddleware.isBodyValid(UserValidator.register),
   userMiddleware.isEmailUniq,
-  authController.register
+  authController.register,
 );
 router.post(
   "/register/seller",
   commonMiddleware.isBodyValid(UserValidator.sellerRegister),
   userMiddleware.isEmailUniq,
   roleMiddleware.isSeller,
-  authController.register
+  authController.register,
 );
 router.post(
-    "/register/manager",
-    authMiddleware.checkAccessAdminToken,
-    commonMiddleware.isBodyValid(UserValidator.sellerRegister),
-    roleMiddleware.isManager,
-    userMiddleware.isEmailUniq,
-    authController.register
+  "/register/manager",
+  authMiddleware.checkAccessAdminToken,
+  commonMiddleware.isBodyValid(UserValidator.sellerRegister),
+  roleMiddleware.isManager,
+  userMiddleware.isEmailUniq,
+  authController.register,
 );
 router.post(
-    "/register/admin",
-    commonMiddleware.isBodyValid(UserValidator.sellerRegister),
-    roleMiddleware.isAdmin,
-    userMiddleware.isEmailUniq,
-    authController.register
+  "/register/admin",
+  commonMiddleware.isBodyValid(UserValidator.sellerRegister),
+  roleMiddleware.isAdmin,
+  userMiddleware.isEmailUniq,
+  authController.register,
 );
-
-
 
 router.post(
   "/register/premium",
