@@ -45,13 +45,11 @@ class AuthMiddleware {
       const accessToken = req.get("Authorization");
       const payload = tokenService.checkToken(accessToken, "access");
       const user = await User.findById(payload.userId);
+      const userRole = user.role;
 
-      if (
-        !accessToken ||
-        (user && (user.role === ERoles.admin || user.role === ERoles.manager))
-      ) {
-      } else {
-        throw new ApiError("No Token or Access! ", 401);
+      const allowedRoles: ERoles[] = [ERoles.admin, ERoles.manager];
+      if (!accessToken || !allowedRoles.includes(userRole)) {
+        throw new ApiError("No Token! ", 401);
       }
 
       const entity = await tokenRepository.findOne({ accessToken });

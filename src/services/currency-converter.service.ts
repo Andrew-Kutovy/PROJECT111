@@ -3,7 +3,6 @@ import { updatePriceService } from "./update-price.service";
 
 class CurrencyConverterService {
   public async convertCurrency(userCurrency: ECurrency, userPrice: number) {
-    // Перевірка валідності введених даних
     if (!Object.values(ECurrency).includes(userCurrency)) {
       throw new Error("Invalid currency specified");
     }
@@ -15,19 +14,25 @@ class CurrencyConverterService {
     const rateEUR = exchangeRates.find((item) => item.ccy === ECurrency.EUR);
     const rateUSD = exchangeRates.find((item) => item.ccy === ECurrency.USD);
 
+    // Перевірка чи отримані курси валют
+    if (!rateEUR || !rateUSD) {
+      throw new Error("Exchange rates not available");
+    }
+
+    // Виконання конвертації валют
     const priceInEUR =
       userCurrency !== ECurrency.EUR
-        ? userPrice / parseFloat(rateEUR?.buy || "1")
+        ? userPrice / parseFloat(rateEUR.buy || "1")
         : userPrice;
 
     const priceInUSD =
       userCurrency !== ECurrency.USD
-        ? userPrice / parseFloat(rateUSD?.buy || "1")
+        ? userPrice / parseFloat(rateUSD.buy || "1")
         : userPrice;
 
     const priceInUAH =
       userCurrency !== ECurrency.UAH
-        ? userPrice * parseFloat(rateUSD?.sale || "1")
+        ? userPrice * parseFloat(rateUSD.sale || "1")
         : userPrice;
 
     return { priceInEUR, priceInUSD, priceInUAH, rateUSD };

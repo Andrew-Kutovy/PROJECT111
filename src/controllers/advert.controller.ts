@@ -31,7 +31,7 @@ class AdvertController {
         priceInEUR,
         priceInUSD,
         priceInUAH,
-        exchangeRate: parseFloat(rateUSD?.sale || "1"),
+        exchangeRate: parseFloat(rateUSD?.buy || "1"), // Используем курс покупки для долларов
       };
 
       const advert = await advertService.createAdvert(advertData, userId);

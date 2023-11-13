@@ -7,7 +7,7 @@ import { EProducer } from "../enums/producer.enum";
 export class AdvertValidator {
   static price = joi.number().min(1).max(5000000);
   static userPrice = joi.valid(...Object.values(ECurrency));
-  static userCurrency = joi.valid(...Object.values(ECurrency));
+  static currency = joi.valid(...Object.values(ECurrency));
   static model = joi.valid(...Object.values(EModel));
   static brand = joi.valid(...Object.values(EProducer));
   static title = joi.string().min(2).max(55);
@@ -18,8 +18,8 @@ export class AdvertValidator {
   static create = joi.object({
     model: this.model.required(),
     brand: this.brand.required(),
+    currency: this.currency.required(),
     price: this.price.required(),
-    userCurrency: this.userCurrency.required(),
     title: this.title.required(),
     description: this.description.required(),
     region: this.region.required(),
