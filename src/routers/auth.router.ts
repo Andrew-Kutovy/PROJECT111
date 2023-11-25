@@ -10,7 +10,7 @@ import { UserValidator } from "../validators/user.validator";
 const router = Router();
 
 router.post(
-  "/register/",
+  "/register",
   commonMiddleware.isBodyValid(UserValidator.register),
   userMiddleware.isEmailUniq,
   authController.register,
@@ -38,12 +38,12 @@ router.post(
   authController.register,
 );
 
-router.post(
-  "/register/premium",
-  commonMiddleware.isBodyValid(UserValidator.register),
-  userMiddleware.isEmailUniq,
-  authController.register,
-);
+// router.post(
+//   "/register/premium",
+//   commonMiddleware.isBodyValid(UserValidator.register),
+//   userMiddleware.isEmailUniq,
+//   authController.register,
+// );
 
 router.post(
   "/login",
@@ -56,15 +56,15 @@ router.post(
   authController.refresh,
 );
 router.post("/logout", authMiddleware.checkAccessToken, authController.logout);
-router.post(
-  "/logout-all",
-  authMiddleware.checkAccessToken,
-  authController.logoutAll,
-);
-router.post(
-  "/activate",
-  authMiddleware.checkAccessToken,
-  authController.sendActivationToken,
-);
+// router.post(
+//   "/logout-all",
+//   authMiddleware.checkAccessToken,
+//   authController.logoutAll,
+// );
+// router.post(
+//   "/activate",
+//   authMiddleware.checkAccessToken,
+//   authController.sendActivationToken,
+// );
 router.put("/activate", authController.activate);
 export const authRouter = router;

@@ -1,0 +1,643 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "SWAGGER FOR API AUTO-RIA CLONE",
+    "version": "2.0.0",
+    "title": "AUTO-RIA",
+    "contact": {
+      "email": "andrewkutovy24@gmail.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "auth",
+      "description": "actions with account",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://project.ua"
+      }
+    },
+    {
+      "name": "adverts",
+      "description": "Operations with adverts",
+      "externalDocs": {
+        "description": "Find out more about adverts",
+        "url": "http://project.ua"
+      }
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["auth"],
+        "description": "create account as buyer",
+        "summary": "create account as buyer",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ACCOUNT WAS CREATED",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/register/seller": {
+      "post": {
+        "tags": ["auth"],
+        "description": "create account as seller",
+        "summary": "create account as seller",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ACCOUNT WAS CREATED",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/register/manager": {
+      "post": {
+        "tags": ["auth"],
+        "description": "create account as manager",
+        "summary": "create account as manager",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Before you need login as admin, then you can creating new manager",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ACCOUNT WAS CREATED",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/auth/register/admin": {
+      "post": {
+        "tags": ["auth"],
+        "description": "create account as admin",
+        "summary": "create account as admin",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ACCOUNT WAS CREATED",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/activate?actionToken={actionToken}": {
+      "put": {
+        "tags": ["auth"],
+        "description": "activate premium account",
+        "summary": "after payment in your mail sent actionToken for activate",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "actionToken",
+            "description": "Your activation code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "premium_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ACCOUNT WAS ACTIVATED",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["auth"],
+        "description": "login in your account",
+        "summary": "login in your account",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "enter yours email and password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "entered",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "tags": ["auth"],
+        "description": "refresh your acces token",
+        "summary": "refresh your acces token",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "enter yours email and password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your refresh token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "refreshed",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": ["auth"],
+        "description": "logout",
+        "summary": "logout",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your accessToken",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successfully logout",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/adverts": {
+      "get": {
+        "tags": ["adverts"],
+        "description": "get all adverts",
+        "summary": "get all adverts",
+        "responses": {
+          "200": {
+            "description": "RETURNED ALL ADVERTS",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    },
+    "/adverts": {
+      "post": {
+        "tags": ["adverts"],
+        "description": "create new advert",
+        "summary": "create new advert",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "enter your advert's data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "RETURNED ALL ADVERTS",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    },
+    "/adverts/{advertId}/photo": {
+      "post": {
+        "tags": ["adverts"],
+        "description": "add photo to adverts",
+        "summary": "add photo to adverts",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "add photo to adverts",
+            "required": true
+          },
+          {
+            "name": "advertId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Photo was added",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    },
+    "/adverts/{advertId}": {
+      "get": {
+        "tags": ["adverts"],
+        "description": "get advert by ID",
+        "summary": "get advert by ID",
+        "parameters": [
+          {
+            "name": "advertId",
+            "in": "path",
+            "description": "ID of advert to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "RETURNED ADVERT",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    },
+    "/adverts/{advertId}": {
+      "delete": {
+        "tags": ["adverts"],
+        "description": "delete advert by ID",
+        "summary": "delete advert by ID",
+        "parameters": [
+          {
+            "name": "advertId",
+            "in": "path",
+            "description": "ID of advert to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ADVERT was deleted",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    },
+    "/adverts/{advertId}": {
+      "put": {
+        "tags": ["adverts"],
+        "description": "update advert by ID",
+        "summary": "update advert by ID",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "change data to adverts",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          },
+          {
+            "name": "advertId",
+            "in": "path",
+            "description": "ID of advert to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ADVERT was updated",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    },
+    "/adverts/statistic/{advertId}": {
+      "get": {
+        "tags": ["adverts"],
+        "description": "get statistic for advert by ID",
+        "summary": "get statistic for advert by ID",
+        "parameters": [
+          {
+            "name": "advertId",
+            "in": "path",
+            "description": "ID of advert",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Your access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Advert's statistic",
+            "schema": {
+              "$ref": "#/definitions/Advert"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "accessToken",
+      "in": "header"
+    },
+    "premium_auth": {
+      "type": "apiKey",
+      "name": "actionToken",
+      "in": "query"
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Advert": {
+      "type": "object",
+      "required": [
+        "model",
+        "brand",
+        "currency",
+        "price",
+        "title",
+        "description",
+        "region"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "sell new BMW"
+        },
+        "description": {
+          "type": "string",
+          "example": "The auto from once owner. Red color. In good condition"
+        },
+        "price":  {
+          "type": "integer",
+          "format": "int64"
+        },
+        "currency": {
+          "type": "string",
+          "enum": [
+            "EUR",
+            "USD",
+            "UAH"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "example": "Chernivtci"
+        },
+        "brand": {
+          "type": "string",
+          "enum": [
+            "BMW",
+            "opel",
+            "mercedes"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "enum": [
+            "M3",
+            "astra",
+            "Z5"
+          ]
+        },
+        "priceInEUR": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "priceInUSD": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "priceInUAH": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "exchangeRate": {
+          "type": "number"
+        },
+        "lastPriceUpdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "photo": {
+          "type": "object"
+        }
+      },
+      "xml": {
+        "name": "Advert"
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "name",
+        "role",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "Ads": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "base",
+            "premium"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "buyer",
+            "seller",
+            "manager",
+            "admin"
+          ]
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    }
+  }
+}

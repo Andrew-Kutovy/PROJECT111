@@ -38,16 +38,6 @@ const advertSchema = new Schema(
       enum: EModel,
       required: true,
     },
-    userCurrency: {
-      type: String,
-      enum: Object.values(ECurrency),
-    },
-    userPrice: {
-      type: Number,
-    },
-    convertedPrice: {
-      type: Number,
-    },
     priceInEUR: {
       type: Number,
     },
