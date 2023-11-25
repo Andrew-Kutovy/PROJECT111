@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="swagger">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="77252a50-17c3-4a66-8121-0657e21ef667" name="Changes" comment="+">
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/configs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/configs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/auth.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/update-price.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/update-price.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/untitled.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,7 @@
         <option value="package.json" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -61,6 +63,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -69,7 +72,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -118,7 +121,8 @@
       <workItem from="1699862233569" duration="5883000" />
       <workItem from="1699885476691" duration="19599000" />
       <workItem from="1700745671467" duration="526000" />
-      <workItem from="1700832591976" duration="25083000" />
+      <workItem from="1700832591976" duration="25983000" />
+      <workItem from="1700934104057" duration="7732000" />
     </task>
     <task id="LOCAL-00001" summary="auth+">
       <option name="closed" value="true" />
@@ -296,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700872207146</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="+">
+      <option name="closed" value="true" />
+      <created>1700874105178</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1700874105178</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,11 +320,15 @@
     <MESSAGE value="+ mailer" />
     <MESSAGE value="+ LogOut" />
     <MESSAGE value="+ activate" />
-    <MESSAGE value="+" />
     <MESSAGE value="+ upload photo" />
     <MESSAGE value="COMPLETE" />
     <MESSAGE value="COMPLETE +" />
     <MESSAGE value="swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="swagger" />
+    <MESSAGE value="+" />
+    <option name="LAST_COMMIT_MESSAGE" value="+" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
