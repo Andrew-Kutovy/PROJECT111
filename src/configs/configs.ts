@@ -20,4 +20,6 @@ export const configs = {
   AWS_S3_BUCKET_NAME: process.env.AWS_S3_BUCKET_NAME,
   AWS_S3_REGION: process.env.AWS_S3_REGION,
   AWS_S3_URL: process.env.AWS_S3_URL,
+
+  BANK_API: process.env.BANK_API,
 };

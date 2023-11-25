@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { Advert } from "../models/Advert.model";
+import {configs} from "../configs/configs";
 
 class UpdatePriceService {
   async updatePrices(): Promise<void> {
@@ -26,12 +27,9 @@ class UpdatePriceService {
     }
   }
 
-  // Функція отримання курсів валют
   public async getExchangeRates(): Promise<any[]> {
     try {
-      const response = await axios.get(
-        "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5",
-      );
+      const response = await axios.get(configs.BANK_API);
       return response.data;
     } catch (error) {
       throw new Error(
@@ -40,7 +38,6 @@ class UpdatePriceService {
     }
   }
 
-  // Викликати цю функцію щодня або за допомогою планувальника задач
   async runDailyUpdate(): Promise<void> {
     try {
       await this.updatePrices();
