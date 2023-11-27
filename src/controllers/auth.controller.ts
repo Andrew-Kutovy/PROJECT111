@@ -19,9 +19,9 @@ class AuthController {
   }
 
   public async sellerRegister(
-      req: Request,
-      res: Response,
-      next: NextFunction,
+    req: Request,
+    res: Response,
+    next: NextFunction,
   ): Promise<Response<void>> {
     try {
       await authService.register(req.body);

@@ -1,4 +1,4 @@
 export enum EFileTypes {
-    User = 'user',
-    Car = 'car',
+  User = "user",
+  Car = "car",
 }

@@ -37,16 +37,16 @@ router.post(
   userMiddleware.isEmailUniq,
   authController.register,
 );
-router.post("/login",
+router.post(
+  "/login",
   commonMiddleware.isBodyValid(UserValidator.login),
   authController.login,
 );
-router.post("/refresh",
+router.post(
+  "/refresh",
   authMiddleware.checkRefreshToken,
   authController.refresh,
 );
-router.post("/logout",
-    authMiddleware.checkAccessToken, authController.logout
-);
+router.post("/logout", authMiddleware.checkAccessToken, authController.logout);
 router.put("/activate", authController.activate);
 export const authRouter = router;

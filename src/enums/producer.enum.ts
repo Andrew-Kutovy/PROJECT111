@@ -1,5 +1,5 @@
 export enum EProducer {
-    Audi = "audi",
-    BMW = "bmw",
-    Opel = "opel",
+  Audi = "audi",
+  BMW = "bmw",
+  Opel = "opel",
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 
+import { configs } from "../configs/configs";
 import { Advert } from "../models/Advert.model";
-import {configs} from "../configs/configs";
 
 class UpdatePriceService {
   async updatePrices(): Promise<void> {

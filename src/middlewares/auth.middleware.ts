@@ -18,7 +18,6 @@ class AuthMiddleware {
       if (!refreshToken) {
         throw new ApiError("No Token!", 401);
       }
-      // const payload = tokenService
 
       const payload = tokenService.checkToken(refreshToken, "refresh");
 

@@ -13,10 +13,8 @@ class StatisticService {
         throw new ApiError("Оголошення не знайдено", 404);
       }
 
-      // Вместо реальных данных о просмотрах используем заглушку
       const views = advert ? advert.get("views") || 0 : 0;
 
-      // Также, давайте убедимся, что у нас есть корректные значения цен
       const userPrice: number = req.body.price || 0;
       const priceInEUR: number = req.body.priceInEUR || 0;
       const priceInUSD: number = req.body.priceInUSD || 0;

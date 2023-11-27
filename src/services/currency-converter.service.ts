@@ -7,19 +7,15 @@ class CurrencyConverterService {
       throw new Error("Invalid currency specified");
     }
 
-    // Отримання курсів валют з API Приватбанку
     const exchangeRates = await updatePriceService.getExchangeRates();
 
-    // Виконання конвертації валют для всіх трьох валют
     const rateEUR = exchangeRates.find((item) => item.ccy === ECurrency.EUR);
     const rateUSD = exchangeRates.find((item) => item.ccy === ECurrency.USD);
 
-    // Перевірка чи отримані курси валют
     if (!rateEUR || !rateUSD) {
       throw new Error("Exchange rates not available");
     }
 
-    // Виконання конвертації валют
     const priceInEUR =
       userCurrency !== ECurrency.EUR
         ? userPrice / parseFloat(rateEUR.buy || "1")
